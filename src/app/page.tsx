@@ -13,10 +13,10 @@ export default function Home() {
       const now = new Date();
       const target = new Date(now);
       if (now.getHours() < 6) {
-        target.setHours(0, 10, 0, 0); // Hari ini jam 6 pagi
+        target.setHours(0, 20, 0, 0); // Hari ini jam 6 pagi
       } else {
         target.setDate(target.getDate() + 1); // Besok
-        target.setHours(0, 10, 0, 0);
+        target.setHours(0, 20, 0, 0);
       }
       return target;
     };
@@ -42,46 +42,53 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-white p-5">
-      <div className=" rounded-2xl p-10 max-w-xl w-full text-center ">
-        <div className="mb-5">
-          <div className="mx-auto w-28 h-28 bg-[url('/logo_jabar.png')] bg-center bg-contain bg-no-repeat drop-shadow-lg animate-[logoFloat_3s_ease-in-out_infinite]" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-blue-100 p-6">
+      <div className="max-w-md w-full bg-white/90 backdrop-blur-md shadow-xl rounded-3xl p-8 text-center relative animate-fade-in">
+        <div className="mb-10 flex justify-center items-center space-x-2">
+          <div className="mx-auto w-24 h-24 bg-[url('/logo_jabar.png')] bg-center bg-contain bg-no-repeat drop-shadow-lg animate-[logoFloat_3s_ease-in-out_infinite]" />
+          <div className="mx-auto w-24 h-24 bg-[url('/logo-spmb.png')] bg-center bg-contain bg-no-repeat drop-shadow-lg animate-[logoFloat_3s_ease-in-out_infinite]" />
         </div>
-
-        <h1 className="text-xl font-semibold uppercase text-gray-800 mb-5">
+        <h1 className="text-4md font-bold uppercase text-gray-800 mb-5">
           Saat ini sedang dilakukan optimalisasi dan peningkatan kualitas
           pelayanan.
         </h1>
+        <p className="text-gray-600 mb-6">
+          Optimalisasi untuk pengalaman yang lebih baik
+        </p>
 
-        <div className="bg-[#fae72e]  text-black py-3 px-6 rounded-xl text-lg font-bold inline-block shadow-lg mb-5">
-          📅 Pukul 23:40 - 00:10 WIB
+        <div className="bg-gradient-to-br bg-[#fae72e]  text-black rounded-xl p-5 mb-6 shadow-lg">
+          <div className="text-xl font-bold">Pukul 23:40 - 00:20 WIB</div>
         </div>
 
-        <div className="text-black font-bold  leading-relaxed text-base mb-6 space-y-4">
-          <p className="uppercase"> Silakan akses kembali pukul 00:10 WIB</p>
+        <div
+          className={`items-center gap-2 rounded-full px-5 py-2 font-semibold text-sm  `}
+        >
+          <div className="flex justify-center items-center space-x-4 mb-3">
+            <div className="text-center">
+              <h1 className="text-[#006f1e] font-bold text-2xl">
+                {time.hours}
+              </h1>
+              <span className="text-sm text-gray-600">Hours</span>
+            </div>
+            <div className="text-center">
+              <h1 className="text-[#006f1e] font-bold text-2xl">
+                {time.minutes}
+              </h1>
+              <span className="text-sm text-gray-600">Minutes</span>
+            </div>
+            <div className="text-center">
+              <h1 className="text-[#006f1e] font-bold text-2xl">
+                {time.seconds}
+              </h1>
+              <span className="text-sm text-gray-600">Seconds</span>
+            </div>
+          </div>
+          <p className="text-black uppercase mb-6">
+            Silakan akses kembali pukul 00:10 WIB
+          </p>
         </div>
-
-        <div className="flex justify-center items-center space-x-4 mb-6">
-          <div className="text-center">
-            <h1 className="text-[#006f1e] font-bold text-2xl">{time.hours}</h1>
-            <span className="text-sm text-gray-600">Hours</span>
-          </div>
-          <div className="text-center">
-            <h1 className="text-[#006f1e] font-bold text-2xl">
-              {time.minutes}
-            </h1>
-            <span className="text-sm text-gray-600">Minutes</span>
-          </div>
-          <div className="text-center">
-            <h1 className="text-[#006f1e] font-bold text-2xl">
-              {time.seconds}
-            </h1>
-            <span className="text-sm text-gray-600">Seconds</span>
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-r  uppercase  bg-[#006f1e]   text-white py-3 px-4 rounded-lg font-bold mt-4">
-          Terima kasih
+        <div className="text-sm text-black uppercase font-bold flex items-center justify-center gap-1 border-t border-gray-100 pt-4">
+          <span>Terima kasih </span>
         </div>
       </div>
     </div>
