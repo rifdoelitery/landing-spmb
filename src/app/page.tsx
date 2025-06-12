@@ -1,6 +1,46 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 export default function Home() {
+  const [time, setTime] = useState({
+    hours: '00',
+    minutes: '00',
+    seconds: '00',
+  });
+  useEffect(() => {
+    const getTargetTime = () => {
+      const now = new Date();
+      const target = new Date(now);
+      if (now.getHours() < 6) {
+        target.setHours(0, 10, 0, 0); // Hari ini jam 6 pagi
+      } else {
+        target.setDate(target.getDate() + 1); // Besok
+        target.setHours(0, 10, 0, 0);
+      }
+      return target;
+    };
+
+    const updateCountdown = () => {
+      const now = new Date();
+      const target = getTargetTime();
+      const diff = target.getTime() - now.getTime();
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      setTime({
+        hours: String(hours).padStart(2, '0'),
+        minutes: String(minutes).padStart(2, '0'),
+        seconds: String(seconds).padStart(2, '0'),
+      });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br bg-white p-5">
       <div className=" rounded-2xl p-10 max-w-xl w-full text-center ">
@@ -14,7 +54,7 @@ export default function Home() {
         </h1>
 
         <div className="bg-[#fae72e]  text-black py-3 px-6 rounded-xl text-lg font-bold inline-block shadow-lg mb-5">
-          📅 Pukul 13:00 - 14:00 WIB
+          📅 Pukul 23:40 - 00:10 WIB
         </div>
 
         <div className="text-black font-bold  leading-relaxed text-base mb-6 space-y-4">
@@ -22,17 +62,21 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center items-center space-x-4 mb-6">
-          <div>
-            <h1 className="text-[#006f1e] font-bold text-2xl ">04</h1>
-            <span>Hours</span>
+          <div className="text-center">
+            <h1 className="text-[#006f1e] font-bold text-2xl">{time.hours}</h1>
+            <span className="text-sm text-gray-600">Hours</span>
           </div>
-          <div>
-            <h1 className="text-[#006f1e] font-bold text-2xl ">04</h1>
-            <span>Minutes</span>
+          <div className="text-center">
+            <h1 className="text-[#006f1e] font-bold text-2xl">
+              {time.minutes}
+            </h1>
+            <span className="text-sm text-gray-600">Minutes</span>
           </div>
-          <div>
-            <h1 className="text-[#006f1e] font-bold text-2xl ">04</h1>
-            <span>Seconds</span>
+          <div className="text-center">
+            <h1 className="text-[#006f1e] font-bold text-2xl">
+              {time.seconds}
+            </h1>
+            <span className="text-sm text-gray-600">Seconds</span>
           </div>
         </div>
 
