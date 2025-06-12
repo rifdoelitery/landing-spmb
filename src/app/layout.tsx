@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'SPMB Jabar',
   description: 'Sistem Penerimaan Mahasiswa Baru Jawa Barat',
+  icons: {
+    icon: './logo-spmb.png',
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="./logo-spmb.png" />
+        <link rel="apple-touch-icon" href="./logo-spmb.png" />
+        <link rel="shortcut icon" href="./logo-spmb.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

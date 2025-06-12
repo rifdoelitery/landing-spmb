@@ -15,10 +15,10 @@ export default function Home() {
       const now = new Date();
       const target = new Date(now);
       if (now.getHours() < 6) {
-        target.setHours(0, 28, 0, 0); // Hari ini jam 00:20
+        target.setHours(0, 37, 0, 0); // Hari ini jam 00:20
       } else {
         target.setDate(target.getDate() + 1); // Besok
-        target.setHours(0, 28, 0, 0);
+        target.setHours(0, 37, 0, 0);
       }
       return target;
     };
@@ -98,18 +98,18 @@ export default function Home() {
           </>
         ) : (
           <div className="mt-6">
-            <p className="text-green-700 text-sm font-semibold mb-4">
+            {/* <p className="text-green-700 text-sm font-semibold mb-4">
               Refresh halaman untuk mengakses layanan SPMB Jabar.
-            </p>
-            {/* <button
+            </p> */}
+            <button
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-200 shadow-lg"
               onClick={() => {
                 // Misalnya redirect
-                window.location.href = '/'; // Ganti sesuai kebutuhan
+                window.location.href = 'https://spmb.jabarprov.go.id/apps'; // Ganti sesuai kebutuhan
               }}
             >
-              Akses Sekarang
-            </button> */}
+              Akses SPMB Jabar
+            </button>
           </div>
         )}
 
