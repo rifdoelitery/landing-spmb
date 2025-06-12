@@ -58,7 +58,7 @@ export default function Home() {
         </div>
 
         <div className="text-black font-bold  leading-relaxed text-base mb-6 space-y-4">
-          <p className="uppercase"> Silakan akses kembali pukul 14:00 WIB</p>
+          <p className="uppercase"> Silakan akses kembali pukul 00:10 WIB</p>
         </div>
 
         <div className="flex justify-center items-center space-x-4 mb-6">
