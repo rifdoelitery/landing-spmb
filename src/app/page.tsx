@@ -15,10 +15,10 @@ export default function Home() {
       const now = new Date();
       const target = new Date(now);
       if (now.getHours() < 6) {
-        target.setHours(0, 41, 0, 0); // Hari ini jam 00:20
+        target.setHours(0, 45, 0, 0); // Hari ini jam 00:20
       } else {
         target.setDate(target.getDate() + 1); // Besok
-        target.setHours(0, 41, 0, 0);
+        target.setHours(0, 45, 0, 0);
       }
       return target;
     };
